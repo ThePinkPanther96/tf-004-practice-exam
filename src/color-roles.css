@@ -1,0 +1,662 @@
+/* Semantic roles are shared by both themes, including feedback and overlays. */
+:root {
+  color: var(--text);
+  background: var(--app-bg);
+}
+body {
+  background: var(--app-bg);
+  color: var(--text);
+}
+button,
+input,
+select {
+  accent-color: var(--primary);
+}
+.topbar,
+.panel,
+.stat,
+.mode-card,
+.option,
+.modal,
+.result-topics > div {
+  background: var(--surface);
+}
+.topbar,
+.page-heading p,
+.eyebrow,
+.footer,
+.stat-label,
+.stat p,
+.panel-heading > span,
+.topic-label,
+.topic-label small,
+.empty p,
+.question-source,
+.question-id,
+.library-summary,
+.source-detail,
+.save-state,
+.grid-legend span,
+.exam-counts span,
+.timer small,
+.timer > svg,
+.icon-button,
+.modal p,
+.result-score small,
+.result-banner p,
+.result-topics > div,
+.search-field,
+.pagination > span,
+.about-panel > p,
+.about-disclaimer p {
+  color: var(--text-secondary);
+}
+.topbar strong,
+.question-prompt,
+.option > .markdown,
+.library-question-toggle .markdown,
+.field-label,
+select,
+input,
+.feedback > .markdown,
+.empty h3,
+.attempt-row strong,
+.exam-counts strong,
+.library-question-toggle,
+.topic-label > span {
+  color: var(--text);
+}
+.sidebar {
+  background: var(--sidebar);
+  color: var(--sidebar-text);
+}
+.brand {
+  color: var(--sidebar-active-text);
+}
+.brand-icon,
+.community-note svg {
+  color: var(--brand-accent);
+}
+.brand-sub,
+.sidebar-label,
+.community-note p,
+.version {
+  color: var(--sidebar-muted);
+}
+.community-note {
+  border-color: var(--sidebar-hover);
+}
+.community-note strong {
+  color: var(--sidebar-text);
+}
+.sidebar nav a {
+  color: var(--sidebar-text);
+}
+.sidebar nav a:hover,
+.sidebar nav small,
+.resume-side {
+  background: var(--sidebar-hover);
+}
+.sidebar nav a.active {
+  background: var(--sidebar-active);
+  color: var(--sidebar-active-text);
+}
+.sidebar nav a.active::before {
+  background: var(--brand-accent);
+}
+.sidebar nav small {
+  color: var(--sidebar-text);
+}
+.sidebar nav a svg {
+  color: var(--sidebar-text);
+}
+.sidebar nav a[href="/study"].active {
+  background: var(--study-nav-active);
+  color: var(--study-nav);
+}
+.sidebar nav a[href="/study"].active::before {
+  background: var(--study-nav);
+}
+.sidebar nav a[href="/exam/new"].active {
+  background: var(--exam-nav-active);
+  color: var(--exam-nav);
+}
+.sidebar nav a[href="/exam/new"].active::before {
+  background: var(--exam-nav);
+}
+.sidebar nav a[href="/history"].active {
+  background: var(--progress-nav-active);
+  color: var(--progress-nav);
+}
+.sidebar nav a[href="/history"].active::before {
+  background: var(--progress-nav);
+}
+.primary {
+  background: var(--primary);
+  color: var(--on-primary);
+}
+.primary:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+.secondary {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text);
+}
+.secondary:hover:not(:disabled) {
+  background: var(--surface-hover);
+}
+.violet {
+  background: var(--primary-soft);
+  color: var(--primary-text);
+}
+.blue {
+  background: var(--study-soft);
+  color: var(--study);
+}
+.exam-accent,
+.pill.exam-accent {
+  background: var(--exam-soft);
+  color: var(--exam);
+}
+.setup-page.exam .primary,
+.attempt-page.exam .primary {
+  background: var(--exam-action);
+}
+.setup-page.exam .primary:hover:not(:disabled),
+.attempt-page.exam .primary:hover:not(:disabled) {
+  background: var(--exam-action-hover);
+}
+.setup-page.exam .page-heading .eyebrow,
+.attempt-page.exam .page-heading .eyebrow,
+.setup-page.exam .rules-list svg,
+.stat-label .lucide-graduation-cap,
+.mode-card[href="/exam/new"] .text-action {
+  color: var(--exam);
+}
+.text-action,
+.panel-heading > a,
+.markdown a,
+.reference-links a,
+.question-source a,
+.footer a,
+.text-button {
+  color: var(--study);
+}
+.text-action:hover,
+.panel-heading > a:hover,
+.footer a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.live-dot {
+  background: var(--study);
+}
+.hero-card {
+  background: linear-gradient(115deg, var(--hero-start), var(--hero-end));
+  color: var(--hero-text);
+}
+.hero-copy .hero-eyebrow,
+.hero-copy p,
+.hero-facts {
+  color: var(--hero-secondary);
+}
+.hero-copy .live-dot {
+  background: var(--brand-accent);
+}
+.cream {
+  background: var(--hero-button);
+  color: var(--hero-button-text);
+}
+.cream:hover {
+  background: var(--on-primary);
+}
+.stat-label svg {
+  color: var(--primary-text);
+}
+.stats-grid.three .stat:last-child .stat-label svg {
+  color: var(--study);
+}
+.mode-card:hover {
+  border-color: var(--primary);
+}
+.mode-card:has(.blue):hover {
+  border-color: var(--study);
+}
+.mode-card[href="/exam/new"]:hover {
+  border-color: var(--exam);
+}
+.card-corner {
+  color: var(--text-muted);
+}
+.mode-card:has(.blue) .text-action {
+  color: var(--study);
+}
+.topic-number,
+.topic-pill {
+  background: var(--surface-subtle);
+  color: var(--text-secondary);
+}
+.progress-track {
+  background: var(--surface-subtle);
+}
+.progress-track > span {
+  background: var(--primary);
+}
+.topic-map .progress-track > span {
+  background: var(--progress);
+}
+.topic-map .topic-number,
+.progress-page .empty-icon {
+  background: var(--progress-soft);
+  color: var(--progress);
+}
+.progress-page .page-heading .eyebrow,
+.progress-page .stat:nth-child(2) .stat-label svg,
+.panel-heading > a[href="/history"] {
+  color: var(--progress);
+}
+.empty-icon {
+  background: var(--primary-soft);
+  color: var(--primary-text);
+}
+.about-disclaimer {
+  background: var(--surface-subtle);
+  border-color: var(--border);
+  color: var(--primary-text);
+}
+.resume-banner {
+  background: var(--primary-soft);
+  border-color: var(--border);
+  color: var(--primary-text);
+}
+.rules-list svg,
+.tip,
+.tip > svg {
+  color: var(--primary-text);
+}
+.exam-ticket {
+  background: var(--primary-soft);
+  border-color: var(--border);
+}
+.exam-ticket .eyebrow,
+.exam-ticket > svg,
+.exam-ticket h2 {
+  color: var(--primary-text);
+}
+.exam-ticket p,
+.exam-ticket > div {
+  color: var(--text-secondary);
+}
+.exam-ticket strong,
+.tip > strong {
+  color: var(--text);
+}
+.setup-page.study .exam-ticket {
+  background: var(--study-soft);
+  border-color: var(--study-border);
+}
+.setup-page.study .exam-ticket .eyebrow,
+.setup-page.study .exam-ticket > svg,
+.setup-page.study .exam-ticket h2 {
+  color: var(--study);
+}
+.setup-page.exam .exam-ticket {
+  background: var(--exam-soft);
+}
+.setup-page.exam .exam-ticket .eyebrow,
+.setup-page.exam .exam-ticket > svg,
+.setup-page.exam .exam-ticket h2 {
+  color: var(--exam);
+}
+.attempt-row:hover,
+.library-question-toggle:hover {
+  background: var(--surface-hover);
+}
+.score,
+.score.passed {
+  color: var(--success);
+}
+.score.failed {
+  color: var(--danger);
+}
+.score.study-result {
+  color: var(--study);
+}
+.score.perfect {
+  color: var(--gold);
+}
+.attempt-icon.passed {
+  background: var(--success-soft);
+  color: var(--success);
+}
+.attempt-icon.perfect {
+  background: var(--gold-soft);
+  color: var(--gold);
+}
+.attempt-icon.study-result {
+  background: var(--study-soft);
+  color: var(--study);
+}
+.attempt-icon.failed {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+.attempt-row > svg {
+  color: var(--text-muted);
+}
+.timer {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text);
+}
+.timer.urgent {
+  background: var(--warning-soft);
+  border-color: var(--warning-border);
+  color: var(--warning);
+}
+.timer.urgent small,
+.timer.urgent > svg {
+  color: var(--warning);
+}
+.question-toolbar .eyebrow,
+.muted {
+  color: var(--text-secondary);
+}
+.flag-button {
+  color: var(--text-secondary);
+}
+.flag-button.flagged {
+  color: var(--warning);
+}
+.markdown code {
+  background: var(--surface-subtle);
+}
+.option {
+  border-color: var(--border);
+}
+.option:hover:not(.locked) {
+  background: var(--surface-hover);
+  border-color: var(--primary);
+}
+.option-letter {
+  background: var(--surface-subtle);
+  color: var(--text-secondary);
+  border-color: var(--border);
+}
+.option.selected {
+  background: var(--primary-soft);
+  border-color: var(--primary);
+}
+.option.selected .option-letter {
+  background: var(--primary);
+  color: var(--on-primary);
+  border-color: var(--primary);
+}
+.option-indicator {
+  border-color: var(--text-muted);
+}
+.option-indicator > span {
+  background: var(--primary);
+}
+.option.right {
+  background: var(--success-soft);
+  border-color: var(--success-border);
+}
+.option.right .option-indicator {
+  color: var(--success);
+}
+.option.right .option-letter {
+  background: var(--success);
+  color: var(--on-success);
+  border-color: var(--success);
+}
+.option.wrong {
+  background: var(--danger-soft);
+  border-color: var(--danger-border);
+}
+.option.wrong .option-indicator {
+  color: var(--danger);
+}
+.question-grid button {
+  color: var(--text-secondary);
+  background: var(--surface);
+  border-color: var(--border);
+}
+.question-grid button.current {
+  outline-color: var(--focus);
+  color: var(--primary-text);
+}
+.question-grid button.answered {
+  background: var(--primary-soft);
+  border-color: var(--primary);
+  color: var(--primary-text);
+}
+.question-grid button.q-correct {
+  background: var(--success-soft);
+  border-color: var(--success-border);
+  color: var(--success);
+}
+.question-grid button.q-incorrect {
+  background: var(--danger-soft);
+  border-color: var(--danger-border);
+  color: var(--danger);
+}
+.question-grid button.q-flagged > span {
+  background: var(--warning);
+  width: 6px;
+  height: 6px;
+}
+.grid-legend i {
+  background: var(--surface);
+  border-color: var(--border);
+  width: 9px;
+  height: 9px;
+}
+.grid-legend .legend-answered {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+.grid-legend .legend-correct {
+  background: var(--success);
+  border-color: var(--success);
+}
+.grid-legend .legend-incorrect {
+  background: var(--danger);
+  border-color: var(--danger);
+}
+.grid-legend .legend-flag {
+  background: var(--warning);
+  border-color: var(--warning);
+}
+.modal-backdrop,
+.nav-overlay {
+  background: var(--overlay);
+}
+.modal {
+  border-color: var(--border);
+  box-shadow: 0 20px 90px var(--shadow);
+}
+.feedback {
+  background: var(--success-soft);
+  border-color: var(--success-border);
+}
+.feedback-title {
+  color: var(--success);
+}
+.feedback.incorrect {
+  background: var(--danger-soft);
+  border-color: var(--danger-border);
+}
+.feedback.incorrect .feedback-title {
+  color: var(--danger);
+}
+.error {
+  background: var(--danger-soft);
+  border-color: var(--danger-border);
+  color: var(--danger);
+}
+.option.wrong.selected .option-letter {
+  background: var(--danger-soft);
+  border-color: var(--danger);
+  color: var(--danger);
+}
+.source-notes {
+  color: var(--warning);
+}
+.result-banner {
+  background: var(--danger-soft);
+  border-color: var(--danger-border);
+}
+.result-banner .result-score {
+  color: var(--danger);
+}
+.result-banner.passed {
+  background: var(--success-soft);
+  border-color: var(--success-border);
+}
+.result-banner.passed .result-score {
+  color: var(--success);
+}
+.result-banner.study-result {
+  background: var(--study-soft);
+  border-color: var(--study-border);
+}
+.result-banner.study-result .result-score {
+  color: var(--study);
+}
+.result-banner.passed .primary {
+  background: var(--exam-action);
+}
+.result-banner.passed .primary:hover:not(:disabled) {
+  background: var(--exam-action-hover);
+}
+.result-banner.perfect {
+  background: var(--gold-soft);
+  border-color: var(--gold-border);
+}
+.result-banner.perfect .result-score,
+.result-banner.perfect .eyebrow {
+  color: var(--gold);
+}
+.result-banner.perfect .primary {
+  background: var(--gold-action);
+}
+.result-banner.perfect .primary:hover:not(:disabled) {
+  background: var(--gold-action-hover);
+}
+.review-filters button {
+  color: var(--text-secondary);
+}
+.review-filters button.active {
+  background: var(--primary-soft);
+  border-color: var(--primary);
+  color: var(--primary-text);
+}
+.search-field input::placeholder {
+  color: var(--text-muted);
+}
+.library-summary {
+  background: var(--surface-subtle);
+}
+.library-tags span {
+  background: var(--surface-subtle);
+  color: var(--text-secondary);
+}
+.library-tags .review-tag {
+  background: var(--warning-soft);
+  color: var(--warning);
+}
+.score-chart > a {
+  background: var(--progress);
+}
+.score-chart > a > span {
+  color: var(--progress);
+}
+.score-chart > a.passed {
+  background: var(--success);
+}
+.score-chart > a.passed > span {
+  color: var(--success);
+}
+.score-chart > a.perfect {
+  background: var(--gold);
+}
+.score-chart > a.perfect > span {
+  color: var(--gold);
+}
+.score-chart > a.failed {
+  background: var(--danger);
+}
+.score-chart > a.failed > span {
+  color: var(--danger);
+}
+.target-line {
+  border-color: var(--warning);
+}
+.target-line > span {
+  color: var(--warning);
+}
+.active-session {
+  background: var(--primary-soft);
+  color: var(--primary-text);
+}
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  min-width: 40px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 14px;
+  white-space: nowrap;
+}
+.theme-toggle:hover {
+  background: var(--surface-hover);
+  border-color: var(--primary);
+}
+.topbar .theme-toggle,
+.topbar .version-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 136px;
+  height: 40px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 20px;
+}
+.topbar-right {
+  gap: 12px;
+}
+@media (max-width: 1380px) {
+  .topbar .local-pill {
+    display: none;
+  }
+}
+@media (max-width: 1150px) {
+  .workspace-label,
+  .breadcrumb-divider {
+    display: none;
+  }
+}
+@media (max-width: 700px) {
+  .topbar .theme-toggle {
+    width: 40px;
+    padding: 8px;
+  }
+  .theme-toggle-label,
+  .topbar .version-pill {
+    display: none;
+  }
+  .topbar {
+    gap: 8px;
+  }
+}

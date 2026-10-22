@@ -1,0 +1,86 @@
+TerraPrep Community License, Version 0.1 (draft)
+Copyright (c) 2026 TerraPrep contributors
+
+This is a project-specific, noncommercial, source-available license. It is not
+the MIT License, GNU AGPL, or an OSI-approved open-source license. This initial
+text implements the project owner's community-use policy and is pending legal
+review before public release. That draft status does not remove the conditions
+below from permission granted under this text.
+
+1. Scope
+"Covered Work" means this project's original application code, documentation,
+and original content identified as licensed under this license, including
+modifications of that work. It does not mean independent third-party software
+or content with its own license or permission. Those materials remain subject
+to their own terms; see THIRD_PARTY_NOTICES.md and questions/README.md.
+
+2. Community permission
+Subject to these conditions, you may use, copy, study, modify, and redistribute
+the Covered Work, and host it for others, without paying a license fee, for
+personal learning, education, and noncommercial community purposes. A person's
+employment or use of the tool to prepare for a professional certification does
+not, by itself, make that use commercial. Free internal employee study use is
+also permitted if the Covered Work is not sold or bundled as a paid offering.
+
+3. Free access and noncommercial restriction
+You may not sell, rent, or sublicense the Covered Work for a fee, charge for
+access to its functionality or practice content, or use it as part of a paid
+product, subscription, course, question package, or service. Public hosting is
+permitted only if all Covered Work functionality and included practice content
+remain available without payment or a purchase requirement. You may not use the
+Covered Work as an advertising-monetized service. Optional, unconditional
+donations that give no additional access or preferential features are allowed.
+
+4. Source sharing
+When distributing the Covered Work or a modified version, provide recipients
+with its complete corresponding source at no charge under this same license.
+When publicly hosting the Covered Work or a modified version, prominently offer
+every user a no-charge link to the complete corresponding source of the version
+being hosted. Include the original and modified application source, question
+data you are authorized to redistribute, and build and deployment instructions.
+Do not include user records, secrets, credentials, or personal runtime databases.
+Private modifications need not be published unless distributed or publicly hosted.
+
+5. Same terms and notices
+Covered modifications and derivatives must retain this license and its free
+access, noncommercial, source-sharing, and attribution requirements. Preserve
+copyright notices, this license text, applicable third-party notices, and
+question-source attribution. Identify material modifications and do not imply
+endorsement by this project's contributors or any question creator. You may not
+impose additional terms that prevent recipients exercising the rights granted
+here. Independent third-party components retain their own terms.
+
+6. Preserving the collection
+Redistributed or publicly hosted versions of the Covered Work must retain the
+included baseline collected question entries, their source attribution, and any
+authorized source artifacts. Duplicates may be linked and questions may be
+corrected or marked unsuitable for scored exams, but their source records must
+remain accessible. Additional questions are welcome. If retention would violate
+an applicable law or a third party's rights or permission, remove the affected
+material and document the reason without redistributing restricted material.
+
+7. No trademark permission
+This license does not grant trademark rights or imply affiliation with HashiCorp,
+Terraform, or other rights holders. Descriptive references remain subject to
+applicable law. Do not represent practice material as authenticated exam content.
+
+8. Contributions
+By intentionally submitting an original contribution for inclusion in this
+project, you offer it under this license unless a different applicable license
+is expressly identified and accepted. Contribute only material you have rights
+to share. Identify third-party sources and their permissions separately.
+
+9. Termination
+Permission under this license terminates if you violate these conditions. If
+you cease the violation and cure it within 30 days after receiving written
+notice, permission is reinstated unless the rights holder states a lawful
+reason why reinstatement is not available. Termination does not remove existing
+obligations concerning notices, free access, or source sharing for copies that
+you continue to distribute or host.
+
+10. Disclaimer
+THE COVERED WORK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE, AND NONINFRINGEMENT. TO THE MAXIMUM EXTENT PERMITTED BY LAW, AUTHORS
+AND CONTRIBUTORS ARE NOT LIABLE FOR CLAIMS, DAMAGES, OR OTHER LIABILITY ARISING
+FROM THE WORK OR ITS USE. NO EXAM RESULT OR CERTIFICATION OUTCOME IS GUARANTEED.

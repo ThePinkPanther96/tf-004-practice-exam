@@ -1,0 +1,22 @@
+services:
+  app:
+    build: .
+    image: terraprep-community:local
+    ports:
+      - "${BIND_ADDRESS:-127.0.0.1}:${APP_PORT:-8080}:3000"
+    environment:
+      COOKIE_SECURE: "${COOKIE_SECURE:-false}"
+      TRUST_PROXY: "${TRUST_PROXY:-0}"
+      SOURCE_URL: "${SOURCE_URL:-}"
+    volumes:
+      - terraprep-data:/app/data
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+volumes:
+  terraprep-data:
