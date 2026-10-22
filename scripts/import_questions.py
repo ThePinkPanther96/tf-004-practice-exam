@@ -1,7 +1,6 @@
 """Rebuild the bank without removing source entries. No runtime OCR or network needed."""
 import argparse
 import copy
-import hashlib
 import json
 import re
 from pathlib import Path
@@ -58,7 +57,7 @@ def screenshot_questions():
         qs = {'id': f'shot-{group}-{n:02}', 'type': 'boolean' if [o['text'].lower() for o in opts] == ['true','false'] else 'multiple' if len(correct) > 1 else 'single',
               'topic': topic, 'prompt': prompt, 'options': opts, 'correct': list(correct), 'explanation': explanation,
               'references': [{'label':'HashiCorp documentation', 'url': ref or 'https://developer.hashicorp.com/terraform/' + refs[topic]}],
-              'source': {'kind':'screenshot','file':f'Screenshot 2026-10-09 at {time}.png','number':str(n),'permission':'Creator permission reported by project owner; source image retained.'},
+              'source': {'kind':'screenshot','file':f'Screenshot 2026-10-09 at {time}.png','number':str(n),'permission':'Community question transcription. Creator permission reported by project owner.'},
               'status':'needs-review' if note else 'ready','notes':[note] if note else []}
         if original is not None:
             qs['sourceAnswer'] = list(original)
@@ -131,7 +130,7 @@ def screenshot_questions():
     add('doc',12,4,'Which Terraform collection type should you use to store key/value pairs?','Set || Map || Tuple || List','B','Maps associate string keys with values of a common type.')
     add('doc',13,4,'You want to pass the id of the vsphere_datacenter data source to datacenter_id on the vsphere_folder resource. Which reference would you use?\n\n```hcl\ndata "vsphere_datacenter" "dc" {}\nresource "vsphere_folder" "parent" {\n  path = "Production"\n  type = "vm"\n  datacenter_id = /* choose below */\n}\n```','data.vsphere_datacenter.dc.id || vsphere_datacenter.dc.id || data.vsphere_datacenter.dc || data.dc.id','A','Data source attributes use data.TYPE.NAME.ATTRIBUTE.')
     add('doc',14,7,'A terraform apply cannot ______ infrastructure.','change || destroy || provision || import','D','Terraform 1.12 can import existing objects during apply using import blocks. Every offered operation can occur during apply.',note='Outdated source question: apply supports configuration-driven import; no valid option remains.')
-    add('doc',15,2,'Which of the following should you put into the required_providers block?','version >= 3.1 || version = ">= 3.1" || [Source option C obscured] || version ~> 3.1 || [Source option E obscured]','E','The screenshot obscures options and gives key E. A quoted constraint such as version = ">= 3.1" is syntactically valid.',note='Incomplete screenshot: options obscured; original image retained.')
+    add('doc',15,2,'Which of the following should you put into the required_providers block?','version >= 3.1 || version = ">= 3.1" || [Source option C obscured] || version ~> 3.1 || [Source option E obscured]','E','The screenshot obscures options and gives key E. A quoted constraint such as version = ">= 3.1" is syntactically valid.',note='Incomplete screenshot: options obscured; original transcription retained.')
     add('doc',16,3,'Why would you use the -replace flag for terraform apply?','You want Terraform to ignore a resource on the next apply. || You want Terraform to destroy all infrastructure in your workspace. || You want to force Terraform to destroy a resource on the next apply. || You want to force Terraform to destroy and recreate a resource on the next apply.','D','-replace=ADDRESS requests replacement of a specific resource. Lifecycle rules can affect create/destroy ordering.')
     add('doc',17,6,'You want to spin up a copy of production for quick tests without configuring a new backend. Which Terraform feature allows multiple states associated with your current code?','Terraform data sources || Terraform local values || Terraform modules || Terraform workspaces || None of the above','D','CLI workspaces maintain separate state instances for the same working configuration and backend. They do not inherently provide security isolation.')
     add('doc',18,6,'All standard backend types support state locking and remote operations like plan, apply, and destroy.',tf,'B','Backend capabilities differ. Remote state storage does not necessarily include remote execution or locking.')
@@ -145,7 +144,7 @@ def screenshot_questions():
     add('doc',27,3,'Which configuration consistency errors does terraform validate report?','A Terraform module is not the latest version. || Differences between local and remote state. || Declaring a resource identifier more than once. || A mix of spaces and tabs in configuration files.','C','Duplicate resource addresses within a module violate configuration consistency.')
     add('doc',28,2,'What does Terraform use the .terraform.lock.hcl file for?','There is no such file. || Tracking specific provider dependencies. || Preventing Terraform runs from occurring. || Storing references to workspaces which are locked.','B','The dependency lock file records selected provider versions and checksums. Its purpose is separate from state locking.')
     add('doc',29,3,'Which Terraform command checks that your configuration syntax is correct?','terraform validate || terraform init || terraform show || terraform fmt','A','Validate checks syntax and internal consistency; fmt formats configuration.')
-    add('doc',30,8,'In a Terraform Cloud workspace linked to a version control repository, speculative plan runs start automatically [remaining source wording unclear].',tf,'A','The source text is truncated/garbled. Pull requests can trigger speculative plans; pushes to the tracked branch trigger ordinary VCS runs.',note='Incomplete source wording and unrelated source explanation; original image retained.')
+    add('doc',30,8,'In a Terraform Cloud workspace linked to a version control repository, speculative plan runs start automatically [remaining source wording unclear].',tf,'A','The source text is truncated/garbled. Pull requests can trigger speculative plans; pushes to the tracked branch trigger ordinary VCS runs.',note='Incomplete source wording and unrelated source explanation; original transcription retained.')
     add('doc',31,5,'Variables declared within a module are accessible outside of the module.',tf,'B','Input variables are scoped to their module. Expose values through outputs and wire them through the parent.')
     add('doc',32,3,'Multiple team members collaborate on Terraform infrastructure and want their code to follow the standard style conventions. How should they ensure this?','Terraform automatically formats configuration on apply. || Run terraform validate before plan or apply. || Use terraform fmt. || Replace all tabs with spaces.','C','terraform fmt rewrites configuration to the canonical Terraform style.')
     add('doc',33,6,'Why does this backend configuration not follow best practices?\n\n```hcl\nterraform {\n  backend "s3" {\n    bucket = "terraform-state-prod"\n    key = "network/terraform.tfstate"\n    region = "us-east-1"\n    access_key = "AKIAIOSFODNITEXAMPLE"\n    secret_key = "EXAMPLE_SECRET_KEY"\n  }\n}\n```','An alias meta-argument should be included in backend blocks. || You should use the local enhanced storage backend. || You should not store credentials in Terraform configuration. || The backend configuration should contain multiple credentials.','C','Supply backend credentials through supported environment variables or credential mechanisms. Do not commit credentials. Displayed keys are documentation examples.')
@@ -191,15 +190,14 @@ def main():
         if q.get('duplicateOf'):
             while by_id[q['duplicateOf']].get('duplicateOf'):
                 q['duplicateOf'] = by_id[q['duplicateOf']]['duplicateOf']
-    missing = {q['source']['file'] for q in bank if q['source']['kind']=='screenshot' and not (SOURCES/'screenshots'/q['source']['file']).exists()}
-    if missing: raise ValueError(f'Missing source screenshots: {missing}')
+    # Legacy source kinds and filenames retain provenance and stable question IDs.
+    # The bank is rebuilt from these transcriptions without the original images.
     (ROOT/'questions/bank.json').write_text(json.dumps(bank, indent=2, ensure_ascii=False)+'\n')
-    report = {'total':len(bank),'markdown':sum(q['source']['kind']=='markdown' for q in bank),'screenshots':106,
+    report = {'total':len(bank),'markdown':sum(q['source']['kind']=='markdown' for q in bank),'transcribed':106,
               'ready':sum(q['status']=='ready' for q in bank),'uniqueReady':len({q.get('duplicateOf',q['id']) for q in bank if q['status']=='ready'}),
               'needsReview':[{'id':q['id'],'notes':q['notes']} for q in bank if q['status']!='ready'],
-              'duplicates':[{'id':q['id'],'duplicateOf':q['duplicateOf']} for q in bank if q.get('duplicateOf')],
-              'sourceHashes':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted((SOURCES/'screenshots').glob('*.png'))}}
+              'duplicates':[{'id':q['id'],'duplicateOf':q['duplicateOf']} for q in bank if q.get('duplicateOf')]}
     (ROOT/'questions/import-report.json').write_text(json.dumps(report,indent=2)+'\n')
-    print(f"Imported {report['total']} entries: {report['markdown']} Markdown + 106 screenshots; {report['uniqueReady']} unique exam-ready questions; {len(report['needsReview'])} entries need review.")
+    print(f"Imported {report['total']} community questions: {report['markdown']} Markdown + {report['transcribed']} transcriptions; {report['uniqueReady']} unique exam-ready questions; {len(report['needsReview'])} entries need review.")
 
 if __name__ == '__main__': main()

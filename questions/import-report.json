@@ -1,7 +1,7 @@
 {
   "total": 245,
   "markdown": 139,
-  "screenshots": 106,
+  "transcribed": 106,
   "ready": 228,
   "uniqueReady": 212,
   "needsReview": [
@@ -74,7 +74,7 @@
     {
       "id": "shot-doc-15",
       "notes": [
-        "Incomplete screenshot: options obscured; original image retained."
+        "Incomplete screenshot: options obscured; original transcription retained."
       ]
     },
     {
@@ -92,7 +92,7 @@
     {
       "id": "shot-doc-30",
       "notes": [
-        "Incomplete source wording and unrelated source explanation; original image retained."
+        "Incomplete source wording and unrelated source explanation; original transcription retained."
       ]
     },
     {
@@ -185,71 +185,5 @@
       "id": "shot-exhibit-46",
       "duplicateOf": "shot-doc-46"
     }
-  ],
-  "sourceHashes": {
-    "Screenshot 2026-10-09 at 15.35.41.png": "44201caa363d97e59e62b234af5f3cf2126ba4a6afb21f57ae81e2765a557fc1",
-    "Screenshot 2026-10-09 at 15.35.50.png": "12941b965bc67e8abe94f1d5a6edf3b3c110dda7472c302fec3b9478f3d6c0af",
-    "Screenshot 2026-10-09 at 15.35.57.png": "3911f088410d838f93ea781aba90dd7ed1ef30b9f95f8708d8fb4422c67e265e",
-    "Screenshot 2026-10-09 at 15.36.06.png": "12ad2459ecf47027c53f78315fd9c09e377daaaab46ecba92e1929b122637fbd",
-    "Screenshot 2026-10-09 at 15.36.10.png": "25a7ac7008eac0e9e29d67f171d8d430a55252ae3d2b3a60d16fa2df11b78fc9",
-    "Screenshot 2026-10-09 at 15.36.47.png": "91e108a1bba83eaa3acba0565e6b60b57040e3a554f73915dd3e5d2f0b96ad23",
-    "Screenshot 2026-10-09 at 15.36.58.png": "390e8ecd06c8f3de6af03ee3baa7e9e79863c87cfe49a756c7878d91f384588c",
-    "Screenshot 2026-10-09 at 15.37.16.png": "94726f00525b1a70863cecde430e463649487d2f53a0e4d2c72f7f140b4e52c3",
-    "Screenshot 2026-10-09 at 15.37.29.png": "b7d5f533b4151ca771d9a585ad907b21df9ae57ee131b406e06480de7a4ba224",
-    "Screenshot 2026-10-09 at 15.37.49.png": "a316431850a1c5819be52ba83d204fd6878a1e613b39a5e6603cf34a3bee9c55",
-    "Screenshot 2026-10-09 at 15.38.00.png": "fc1e7e7655992f59f69eec1dd9749827aced343aecf4517b2333913880df4ced",
-    "Screenshot 2026-10-09 at 15.38.12.png": "0ca132c7b885741f255397981edf6afd0a1c7adc854d81d97288b23185813180",
-    "Screenshot 2026-10-09 at 15.38.23.png": "b189b1946d084e055b0d548cbd369e4dac7a4f7be28bf888431a9953ed5f32fa",
-    "Screenshot 2026-10-09 at 15.38.41.png": "2a70c2d96725f77f6e16871f8562c07eaeb3a1676d1c1152a516c1d6414a3fe0",
-    "Screenshot 2026-10-09 at 15.59.57.png": "d087e20456aa5b2cc564e412bfac0ec5cf7322c365ef13700db551d594019c51",
-    "Screenshot 2026-10-09 at 16.00.42.png": "ea4babde9756c677fccb131e893f33021cec78799d81e6ef6641ef90ef70d04d",
-    "Screenshot 2026-10-09 at 16.00.50.png": "cd69ce72f6db363f61abccd3fc0fe95ff2d0c5ae2095650b5342dd941069c2a2",
-    "Screenshot 2026-10-09 at 16.00.59.png": "e36c69d5d555562bcd68f003d2c29395decf5d4efc62b275fdbf0e8da97275f8",
-    "Screenshot 2026-10-09 at 16.01.07.png": "ddbbe048c781d2390104ace702f5940643b55a3fd5792bb24f33d50a2f9d350a",
-    "Screenshot 2026-10-09 at 16.02.44.png": "2d04209d539925a0a017555b78fa7db536a9185b2acdef33c500b6df0510e322",
-    "Screenshot 2026-10-09 at 16.02.51.png": "a7b4ef53e5cf99d6e605c43517f0e29d43d89074d3af71666edf414ade6a80ad",
-    "Screenshot 2026-10-09 at 16.03.28.png": "3f1c2d0084d87c16a8075326aec7bfdef532057dced46483fac8a40e46d3a721",
-    "Screenshot 2026-10-09 at 16.03.34.png": "f4dc0ee263155a6510098b991800b946991bcab3923f003edbe4b1a47f9c5cd1",
-    "Screenshot 2026-10-09 at 16.03.52.png": "6c95472e3e2b6a8526d540db3b4d0f481feb95fc78f78dd801977ab00390814f",
-    "Screenshot 2026-10-09 at 16.03.58.png": "d0d6680eff0e5ae4b6257235aba4db4217c88646000cdfe769dc69c7402fa00d",
-    "Screenshot 2026-10-09 at 16.08.33.png": "d081e785f548bb1789cee90fe198f344798f3f444b56ef1ef5fb280ef5ac08bc",
-    "Screenshot 2026-10-09 at 16.08.40.png": "ada728f3c993bb1d7c47d9cd45a08e6bd9524d823704ae27da09b9a5d4fe90c9",
-    "Screenshot 2026-10-09 at 16.08.46.png": "a69dda414da13452cd8a51197cff600ce498b0e467f843c32cbbe4a06896a716",
-    "Screenshot 2026-10-09 at 16.08.52.png": "72459ac340be67ffcbc2361504e64d24dd727df7b69cb4112b2fd9ab1f53cdac",
-    "Screenshot 2026-10-09 at 16.08.57.png": "0a7a241c76314b8de369096126c61ee923414058466135fbbcfbd7358f5e48d9",
-    "Screenshot 2026-10-09 at 16.09.02.png": "e7b26c5d0574b4225f2680b52ec1278e404836aeeab611a932d4f73e3accefdb",
-    "Screenshot 2026-10-09 at 16.09.08.png": "c6b6677427734783710af6d9497f9da5201b16aa9eb566d71008cfa28c9e3fe7",
-    "Screenshot 2026-10-09 at 16.09.13.png": "688b51dee90d9b32d2310f3eee34f0ec7bdcd2339a823f5f2d0d65d1ee48ee5e",
-    "Screenshot 2026-10-09 at 16.09.18.png": "22b29aa4446ecf3c92e873705601dd6b7180860bac8a2ae54160bcc154c391f2",
-    "Screenshot 2026-10-09 at 16.09.23.png": "8e74d0ac3498ba2f3df7ee4170516278e4bd7e8ed08a717be6fb4f0a8a988119",
-    "Screenshot 2026-10-09 at 16.13.10.png": "0fe29495b65db91b53017b10ce5dad8dbee24d8cc1f0a3653fb737595f3831da",
-    "Screenshot 2026-10-09 at 16.26.22.png": "bc94b709177dcbc965893d0e827593f6ae63a2769e7a99bfb202a71d81c1ed02",
-    "Screenshot 2026-10-09 at 16.26.43.png": "d8062bc0864cad70148998569d5cba9c323c800d0d09eab4043f2c1395f31b9f",
-    "Screenshot 2026-10-09 at 16.26.50.png": "8215906c365d8ccc655172f8fd6afe9889f9410d6fe17488328bad6f88706e84",
-    "Screenshot 2026-10-09 at 16.27.06.png": "b7e8aa5d55a27cbf54b476f39131e492f3cc5b03cd128fe9db9db717b2669818",
-    "Screenshot 2026-10-09 at 16.27.14.png": "19178d5f3350b6d469e03abdfa1f1c348b9a8c98e9819eee35a611fb2f1a142d",
-    "Screenshot 2026-10-09 at 16.27.24.png": "802295ca734aad26ee0b64e847f3b3f7c85b04208f2c29989e6554cd79941486",
-    "Screenshot 2026-10-09 at 16.27.33.png": "30a505499ec02e89b491345ed9b6e47912e18360029cfb04e95999b78e0ddf47",
-    "Screenshot 2026-10-09 at 16.27.39.png": "a73db4639b972a8648325b7bc1be4bae8cdb6187d15de311852d90f117579205",
-    "Screenshot 2026-10-09 at 16.27.45.png": "9a96f2c6927b12066dfda87f7b79f29b84bfba7fc8351df3668490b059ff93fc",
-    "Screenshot 2026-10-09 at 16.27.52.png": "fd28cb349b9323c7f32d022db86c2a12c58426095d64fceef5fefa27b4fa0863",
-    "Screenshot 2026-10-09 at 16.28.08.png": "4c51d4f494ba4c170df08a26ce23b175cd54eaaeb3147b09601b1afdf854ac50",
-    "Screenshot 2026-10-09 at 16.28.27.png": "b3714ba951b710d12de2a62a0c236718385d453b69e4dcaaa763a7b3d8953710",
-    "Screenshot 2026-10-09 at 16.28.35.png": "c470b925c48effd5a217f28700752c1e25f307667b694545e97237377443bc3f",
-    "Screenshot 2026-10-09 at 16.28.40.png": "7959884508b7d39853d49569378519a499cfc0c5da50d1180782b494d255e22c",
-    "Screenshot 2026-10-09 at 16.28.48.png": "5163d1af5499db7f76f36ee1712080021287485651077ffbd36ae88a687861d4",
-    "Screenshot 2026-10-09 at 16.28.54.png": "8a872f4a777371696190a115b3cd7db28582e2df6dd4aa906ff4acb39edb9369",
-    "Screenshot 2026-10-09 at 16.29.12.png": "c1b8e891b30014b431627075ea98a82cbc3f8e4970f1339da2fe6562952fced7",
-    "Screenshot 2026-10-09 at 16.29.16.png": "5d6fe7fe02bfcf9587085108e1f30bc0cc24b68bf3805a99dce3e41e1f10b059",
-    "Screenshot 2026-10-09 at 16.29.23.png": "ebbf36197c462c11ae84bd68ea770be12d0475b964c331effb85e3f1f2640c99",
-    "Screenshot 2026-10-09 at 16.29.51.png": "d5acf531c684e14fb181ee37c72e0e213dfda010217b48db7d245950af31378a",
-    "Screenshot 2026-10-09 at 16.29.59.png": "a38615b6b20a7638295197081cda9fcb35d92d69423badb9a69f0b071ae1ef39",
-    "Screenshot 2026-10-09 at 16.30.07.png": "df28138e0254f0e9ec6b3c3b36487d9e058ae426ac5bfb9e15e7d277feef4cf6",
-    "Screenshot 2026-10-09 at 16.30.14.png": "f91ef1735cf07a68452f1877c7abc14c79c7288fe7e4abc76b71026669c77206",
-    "Screenshot 2026-10-09 at 16.30.23.png": "6c3526c3b9d5e4b32e9c43d54ed56c1f70effb1cd201151a8e3ddfab20c7e7ee",
-    "Screenshot 2026-10-09 at 16.30.31.png": "fcf6ab99edfe681feba602a777b610abecd37eb5c3cd01480227dc005156a6e9",
-    "Screenshot 2026-10-09 at 16.30.41.png": "b56d28856e285db0616c2e75ad4a3af6cbafe3ce166fd256a41683e8b53d9959",
-    "Screenshot 2026-10-09 at 16.30.50.png": "099566544a3109f6e78d8a783b3bc5d260b2957853e4cab73ba6199dda01fdb5",
-    "Screenshot 2026-10-09 at 16.32.08.png": "c1684aa3ddefdb26ef3c7385367bbc6af05d0c257a7b646a7466b521a28b2959"
-  }
+  ]
 }

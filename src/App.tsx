@@ -1,4 +1,5 @@
 import {
+  Fragment,
   useCallback,
   useEffect,
   useRef,
@@ -11,6 +12,7 @@ import {
   Route,
   Routes,
   useLocation,
+  useMatch,
   useNavigate,
   useParams,
 } from "react-router-dom";
@@ -192,6 +194,7 @@ export function App() {
   const [error, setError] = useState("");
   const [mobile, setMobile] = useState(false);
   const location = useLocation();
+  const attemptRoute = useMatch("/attempt/:id");
   const refresh = useCallback(
     () =>
       api<Dashboard>("/dashboard")
@@ -207,7 +210,7 @@ export function App() {
     setMobile(false);
     window.scrollTo(0, 0);
   }, [location.pathname, refresh]);
-  const isAttempt = location.pathname.startsWith("/attempt/");
+  const isAttempt = !!attemptRoute;
   const nav = [
     { to: "/", icon: LayoutDashboard, label: "Overview" },
     { to: "/exam/new", icon: GraduationCap, label: "Practice exam" },
@@ -216,6 +219,29 @@ export function App() {
     { to: "/history", icon: History, label: "My progress" },
     { to: "/about", icon: CircleHelp, label: "About this project" },
   ];
+  const attempt =
+    dashboard && attemptRoute
+      ? [...dashboard.active, ...dashboard.history].find(
+          (item) => item.id === attemptRoute.params.id,
+        )
+      : null;
+  const currentPage =
+    nav.find(
+      ({ to }) =>
+        to === (location.pathname.replace(/\/+$/, "").toLowerCase() || "/"),
+    )?.label ?? (attemptRoute ? "Session" : "Page not found");
+  const breadcrumbs = attempt
+    ? [
+        {
+          label: attempt.mode === "exam" ? "Practice exam" : "Study mode",
+          to: attempt.mode === "exam" ? "/exam/new" : "/study",
+        },
+        {
+          label: attempt.status === "submitted" ? "Results" : "Active session",
+          to: location.pathname,
+        },
+      ]
+    : [{ label: currentPage, to: location.pathname }];
   return (
     <div className={`app ${isAttempt ? "exam-app" : ""}`}>
       <button
@@ -275,11 +301,39 @@ export function App() {
       </aside>
       <div className="main-wrap">
         <header className="topbar">
-          <span>
-            <span className="workspace-label">Certification workspace</span>{" "}
-            <ChevronRight className="breadcrumb-divider" size={14} />{" "}
-            <strong>Terraform Associate</strong>
-          </span>
+          <nav className="breadcrumbs" aria-label="Breadcrumb">
+            <Link to="/" className="workspace-label">
+              Certification workspace
+            </Link>
+            {breadcrumbs.map((crumb, index) => {
+              const current = index === breadcrumbs.length - 1;
+              return (
+                <Fragment key={crumb.to}>
+                  <ChevronRight
+                    className="breadcrumb-divider"
+                    size={14}
+                    aria-hidden="true"
+                  />
+                  <Link
+                    to={
+                      current
+                        ? {
+                            pathname: crumb.to,
+                            search: location.search,
+                            hash: location.hash,
+                          }
+                        : crumb.to
+                    }
+                    className={current ? undefined : "breadcrumb-parent"}
+                    aria-current={current ? "page" : undefined}
+                    replace={current}
+                  >
+                    {current ? <strong>{crumb.label}</strong> : crumb.label}
+                  </Link>
+                </Fragment>
+              );
+            })}
+          </nav>
           <div className="topbar-right">
             <button
               className="theme-toggle"
@@ -939,13 +993,12 @@ function Exam({ refresh }: { refresh: () => Promise<void> }) {
   const [reviewFilter, setReviewFilter] = useState("all");
   const modalRef = useRef<HTMLElement>(null);
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [index, reviewFilter, a?.status]);
-  useEffect(() => {
     if (!confirm) return;
     const previous = document.activeElement as HTMLElement | null;
     const modal = modalRef.current;
-    modal?.querySelector<HTMLButtonElement>("button")?.focus();
+    modal
+      ?.querySelector<HTMLButtonElement>("button")
+      ?.focus({ preventScroll: true });
     const keys = (event: KeyboardEvent) => {
       if (event.key === "Escape" && !busy) {
         setConfirm(false);
@@ -959,16 +1012,16 @@ function Exam({ refresh }: { refresh: () => Promise<void> }) {
         last = buttons.at(-1);
       if (event.shiftKey && document.activeElement === first) {
         event.preventDefault();
-        last?.focus();
+        last?.focus({ preventScroll: true });
       } else if (!event.shiftKey && document.activeElement === last) {
         event.preventDefault();
-        first?.focus();
+        first?.focus({ preventScroll: true });
       }
     };
     document.addEventListener("keydown", keys);
     return () => {
       document.removeEventListener("keydown", keys);
-      previous?.focus();
+      previous?.focus({ preventScroll: true });
     };
   }, [confirm, busy]);
   const offset = useRef(0),
@@ -1326,21 +1379,7 @@ function Exam({ refresh }: { refresh: () => Promise<void> }) {
                 <Feedback question={q} response={response} />
               )}
               <div className="question-source">
-                <span>
-                  {q.id.toUpperCase()} ·{" "}
-                  {q.source.kind === "markdown"
-                    ? "Community question"
-                    : "Screenshot collection"}
-                </span>
-                {reveal && q.source.kind === "screenshot" && (
-                  <a
-                    href={`/sources/${encodeURIComponent(q.source.file)}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    View original <ExternalLink size={12} />
-                  </a>
-                )}
+                <span>{q.id.toUpperCase()} · Community question</span>
               </div>
             </>
           )}
@@ -1679,11 +1718,7 @@ function Library() {
                   <Content>{q.prompt}</Content>
                   <div className="library-tags">
                     <span>{TOPICS[q.topic - 1]}</span>
-                    <span>
-                      {q.source.kind === "markdown"
-                        ? "Community Markdown"
-                        : "Screenshot"}
-                    </span>
+                    <span>Community question</span>
                     {q.duplicateOf && <span>Linked duplicate</span>}
                     {q.status === "needs-review" && (
                       <span className="review-tag">Needs review</span>
@@ -1705,7 +1740,11 @@ function Library() {
                   <Feedback question={q} library />
                   <div className="source-detail">
                     <strong>
-                      Source: {q.source.file} · Question {q.source.number}
+                      Source:{" "}
+                      {q.source.kind === "markdown"
+                        ? q.source.file
+                        : "Community question"}{" "}
+                      · Question {q.source.number}
                     </strong>
                     <p>{q.source.permission}</p>
                     {q.duplicateOf && (
@@ -1713,16 +1752,6 @@ function Library() {
                         Equivalent entry: {q.duplicateOf.toUpperCase()}. Both
                         entries remain in the collection.
                       </p>
-                    )}
-                    {q.source.kind === "screenshot" && (
-                      <a
-                        className="text-action"
-                        href={`/sources/${encodeURIComponent(q.source.file)}`}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        Open original screenshot <ExternalLink size={14} />
-                      </a>
                     )}
                   </div>
                 </div>

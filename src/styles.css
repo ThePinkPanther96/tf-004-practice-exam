@@ -229,10 +229,26 @@ p {
   font-size: 15px;
   color: var(--text-secondary);
 }
-.topbar > span {
+.topbar > .breadcrumbs {
   display: flex;
   align-items: center;
   gap: 12px;
+  min-width: 0;
+}
+.breadcrumbs a {
+  white-space: nowrap;
+}
+.breadcrumbs a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.breadcrumbs a[aria-current="page"] {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.breadcrumb-divider {
+  flex-shrink: 0;
 }
 .topbar strong {
   color: var(--text-secondary);
@@ -2155,6 +2171,7 @@ input[type="radio"] {
 }
 @media (max-width: 700px) {
   .workspace-label,
+  .breadcrumb-parent,
   .breadcrumb-divider {
     display: none;
   }
@@ -2192,7 +2209,7 @@ input[type="radio"] {
     padding: 0 18px 0 55px;
     font-size: 14px;
   }
-  .topbar > span {
+  .topbar > .breadcrumbs {
     gap: 5px;
   }
   .topbar .version-pill {

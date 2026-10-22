@@ -88,6 +88,14 @@ test("HTTP exam flow, cookie isolation, validation, origin checks, and library a
     ).json();
     assert.ok(library.questions.every((q: { topic: number }) => q.topic === 3));
     assert.equal((await fetch(base + "/api/unknown")).status, 404);
+    assert.equal(
+      (
+        await fetch(
+          base + "/sources/Screenshot%202026-10-09%20at%2015.35.41.png",
+        )
+      ).status,
+      404,
+    );
   } finally {
     await new Promise<void>((resolve) => server.close(() => resolve()));
     store.close();

@@ -8,7 +8,8 @@ Verified on 21 October 2026.
   origin checks, browser isolation, deadline enforcement, and SQLite persistence.
 - `npm run build`: TypeScript checks and client/server production builds passed.
 - `npm run validate:questions`: 245 entries, 228 ready entries, 212 unique ready
-  groups, 17 review entries, and all 64 original screenshots retained.
+  groups and 17 review entries. The 106 transcribed question entries remain;
+  the 64 original question screenshots have since been removed.
 - `docker compose up --build -d`: image built; non-root app is healthy with a
   read-only root filesystem and a persistent SQLite volume. Only
   `127.0.0.1:8080` is exposed.

@@ -134,9 +134,8 @@ export function ShineScore() {
           <>
             <span className="perfect-score-face">
               <Trophy size={38} aria-hidden="true" />
-              <span>
-                100%<small>Your score</small>
-              </span>
+              <span className="perfect-score-value">100%</span>
+              <small>Your score</small>
             </span>
           </>
         )}

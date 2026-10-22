@@ -21,12 +21,13 @@ The source document also contains attributed, linked Reddit excerpts and reports
 They are contextual source material, not additional scored questions, and are not
 represented as MIT-licensed contributions by their authors.
 
-## Screenshot collection
+## Community question transcriptions
 
-64 original screenshots contain 106 question entries, including repeated entries.
+106 question entries were transcribed from 64 source images, including repeated entries.
 The project owner reports obtaining the creators’ permission to include this
-material in this free community project. Original images, extracted OCR, source
-filenames, source answer keys where corrected, and review notes are retained.
+material in this free community project. The original images are not bundled.
+Extracted text, historical source filenames, corrected source answer keys, and
+review notes are retained.
 The application’s license does not imply ownership of these questions or override
 their creators’ terms. Creator identities and copies or summaries of permission
 scope should be added here when preparing a public release; private contact

@@ -128,17 +128,14 @@ export function createApp(store: Store) {
   app.post("/api/attempts/:id/submit", (req, res) =>
     res.json(store.submit(res.locals.owner, req.params.id)),
   );
-  app.use(
-    "/sources",
-    express.static(resolve("questions/sources/screenshots"), {
-      dotfiles: "deny",
-      index: false,
-    }),
-  );
   if (existsSync(resolve("dist/client/index.html"))) {
     app.use(express.static(resolve("dist/client")));
     app.get("/{*path}", (req, res) => {
-      if (req.path.startsWith("/api/"))
+      if (
+        req.path.startsWith("/api/") ||
+        req.path === "/sources" ||
+        req.path.startsWith("/sources/")
+      )
         res.status(404).json({ error: "Not found." });
       else res.sendFile(resolve("dist/client/index.html"));
     });

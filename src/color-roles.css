@@ -643,6 +643,7 @@ input,
 }
 @media (max-width: 1150px) {
   .workspace-label,
+  .breadcrumb-parent,
   .breadcrumb-divider {
     display: none;
   }

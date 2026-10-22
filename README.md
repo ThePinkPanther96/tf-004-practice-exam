@@ -28,8 +28,8 @@ loopback interface. SQLite lives in the persistent `terraprep-data` Docker volum
 - Untimed study sessions with topic filters, missed-question practice, and
   immediate answer checks.
 - Detailed review, explanations, source links, objective breakdowns, and history.
-- Searchable collection of **245 entries**: 139 Markdown questions and 106
-  screenshot entries, preserving all 64 original images.
+- Searchable collection of **245 community questions**: 139 Markdown questions
+  and 106 text transcriptions. Original question screenshots are not bundled.
 - Linked duplicates, documented corrections, and visible review status for
   incomplete or ambiguous sources. No collected entry is silently removed.
 - Anonymous browser-specific histories; no login or analytics.
@@ -115,7 +115,7 @@ license text is a draft pending legal review before public release.
 
 Third-party content keeps its applicable licenses and permissions; the project
 license does not replace them. See `THIRD_PARTY_NOTICES.md`. The project owner
-reports receiving permission from screenshot creators. Public-release attribution
+reports receiving permission from the transcribed-question creators. Public-release attribution
 details can be completed without publishing private correspondence.
 
 Easter egg triggers and optional labeled demo progress are documented in
