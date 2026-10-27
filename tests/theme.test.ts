@@ -102,6 +102,10 @@ test("main text, actions, and semantic status colors remain readable in both the
       ["danger", "danger-soft"],
       ["sidebar-text", "sidebar"],
       ["sidebar-muted", "sidebar"],
+      ...Array.from({ length: 8 }, (_, i) => [
+        `topic-${i + 1}`,
+        `topic-${i + 1}-soft`,
+      ]),
     ]) {
       const values = [luminance(colors[fg]), luminance(colors[bg])].sort(
         (a, b) => b - a,

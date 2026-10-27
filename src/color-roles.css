@@ -567,6 +567,51 @@ input,
   background: var(--warning-soft);
   color: var(--warning);
 }
+.category-badge[data-topic="1"] {
+  --category-text: var(--topic-1);
+  --category-bg: var(--topic-1-soft);
+}
+.category-badge[data-topic="2"] {
+  --category-text: var(--topic-2);
+  --category-bg: var(--topic-2-soft);
+}
+.category-badge[data-topic="3"] {
+  --category-text: var(--topic-3);
+  --category-bg: var(--topic-3-soft);
+}
+.category-badge[data-topic="4"] {
+  --category-text: var(--topic-4);
+  --category-bg: var(--topic-4-soft);
+}
+.category-badge[data-topic="5"] {
+  --category-text: var(--topic-5);
+  --category-bg: var(--topic-5-soft);
+}
+.category-badge[data-topic="6"] {
+  --category-text: var(--topic-6);
+  --category-bg: var(--topic-6-soft);
+}
+.category-badge[data-topic="7"] {
+  --category-text: var(--topic-7);
+  --category-bg: var(--topic-7-soft);
+}
+.category-badge[data-topic="8"] {
+  --category-text: var(--topic-8);
+  --category-bg: var(--topic-8-soft);
+}
+.library-tags .category-badge,
+.topic-pill.category-badge {
+  background: var(--category-bg, var(--surface-subtle));
+  color: var(--category-text, var(--text-secondary));
+}
+.library-tags .community-tag {
+  background: var(--surface-subtle);
+  color: var(--text-secondary);
+}
+.library-tags .duplicate-tag {
+  background: var(--primary-soft);
+  color: var(--primary-text);
+}
 .score-chart > a {
   background: var(--progress);
 }

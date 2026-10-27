@@ -64,10 +64,42 @@
   --art-four: #625795;
   --overlay: #0f172a80;
   --shadow: #0f172a26;
+  --topic-1: #6d28d9;
+  --topic-1-soft: #f3e8ff;
+  --topic-2: #1d4ed8;
+  --topic-2-soft: #dbeafe;
+  --topic-3: #0f766e;
+  --topic-3-soft: #ccfbf1;
+  --topic-4: #166534;
+  --topic-4-soft: #dcfce7;
+  --topic-5: #9d174d;
+  --topic-5-soft: #fce7f3;
+  --topic-6: #155e75;
+  --topic-6-soft: #cffafe;
+  --topic-7: #9a3412;
+  --topic-7-soft: #ffedd5;
+  --topic-8: #3730a3;
+  --topic-8-soft: #e0e7ff;
 }
 
 :root[data-theme="dark"] {
   color-scheme: dark;
+  --topic-1: #d8b4fe;
+  --topic-1-soft: #3b2455;
+  --topic-2: #93c5fd;
+  --topic-2-soft: #1e3558;
+  --topic-3: #5eead4;
+  --topic-3-soft: #163c3a;
+  --topic-4: #86efac;
+  --topic-4-soft: #1c3c2b;
+  --topic-5: #f9a8d4;
+  --topic-5-soft: #4a253e;
+  --topic-6: #67e8f9;
+  --topic-6-soft: #173b49;
+  --topic-7: #fdba74;
+  --topic-7-soft: #4a2d1c;
+  --topic-8: #a5b4fc;
+  --topic-8-soft: #2c3058;
   --app-bg: #101827;
   --surface: #192435;
   --surface-subtle: #243146;

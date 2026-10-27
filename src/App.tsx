@@ -1288,7 +1288,9 @@ function Exam({ refresh }: { refresh: () => Promise<void> }) {
               QUESTION {(visibleIndex ?? 0) + 1}{" "}
               <span className="muted">OF {a.count}</span>
             </span>
-            <span className="pill topic-pill">{TOPICS[q.topic - 1]}</span>
+            <span className="pill topic-pill category-badge" data-topic={q.topic}>
+              {TOPICS[q.topic - 1]}
+            </span>
             {!submitted && (
               <button
                 className={`flag-button ${response?.flagged ? "flagged" : ""}`}
@@ -1717,9 +1719,13 @@ function Library() {
                 <div>
                   <Content>{q.prompt}</Content>
                   <div className="library-tags">
-                    <span>{TOPICS[q.topic - 1]}</span>
-                    <span>Community question</span>
-                    {q.duplicateOf && <span>Linked duplicate</span>}
+                    <span className="category-badge" data-topic={q.topic}>
+                      {TOPICS[q.topic - 1]}
+                    </span>
+                    <span className="community-tag">Community question</span>
+                    {q.duplicateOf && (
+                      <span className="duplicate-tag">Linked duplicate</span>
+                    )}
                     {q.status === "needs-review" && (
                       <span className="review-tag">Needs review</span>
                     )}
