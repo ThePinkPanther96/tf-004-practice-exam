@@ -1945,11 +1945,11 @@ function About() {
         <h3>A community project, free to use</h3>
         <p>
           Local use and free public hosting are welcome. The project uses a
-          custom noncommercial, source-sharing community license. Selling the
+          TerraPrep Community License 1.0, a custom noncommercial, source-sharing
+          license. Selling the
           app, charging for access, and closed-source derivatives are
           prohibited. Third-party material retains its applicable terms and
-          attribution. The license is a project-specific draft, pending legal
-          review before public release.
+          attribution.
         </p>
         <h3>Your progress stays with your browser</h3>
         <p>

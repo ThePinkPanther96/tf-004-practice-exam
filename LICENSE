@@ -1,18 +1,21 @@
-TerraPrep Community License, Version 0.1 (draft)
+TerraPrep Community License, Version 1.0
 Copyright (c) 2026 TerraPrep contributors
 
+This license permits free community use, modification, redistribution, and
+hosting of the Covered Work under the conditions below. Commercial use and
+paid access are prohibited. Distributed and publicly hosted versions must
+share their corresponding source under this same license.
+
 This is a project-specific, noncommercial, source-available license. It is not
-the MIT License, GNU AGPL, or an OSI-approved open-source license. This initial
-text implements the project owner's community-use policy and is pending legal
-review before public release. That draft status does not remove the conditions
-below from permission granted under this text.
+the MIT License, GNU AGPL, or an OSI-approved open-source license.
 
 1. Scope
 "Covered Work" means this project's original application code, documentation,
-and original content identified as licensed under this license, including
-modifications of that work. It does not mean independent third-party software
-or content with its own license or permission. Those materials remain subject
-to their own terms; see THIRD_PARTY_NOTICES.md and questions/README.md.
+and original content made available under this license, including modifications
+and derivatives of that work. Independent third-party software and content are
+excluded and remain subject to their own licenses or permissions. See
+THIRD_PARTY_NOTICES.md and questions/README.md for attribution and applicable
+terms. This license grants only rights that the relevant contributors hold.
 
 2. Community permission
 Subject to these conditions, you may use, copy, study, modify, and redistribute
@@ -40,6 +43,13 @@ being hosted. Include the original and modified application source, question
 data you are authorized to redistribute, and build and deployment instructions.
 Do not include user records, secrets, credentials, or personal runtime databases.
 Private modifications need not be published unless distributed or publicly hosted.
+
+"Complete corresponding source" means the preferred form for modifying the
+version provided, including its application code, covered documentation and
+content, dependency manifests, and scripts and instructions needed to build,
+install, and run it. A link to a different or unmodified version does not meet
+this requirement. Source access must remain available for as long as that
+version is distributed or publicly hosted.
 
 5. Same terms and notices
 Covered modifications and derivatives must retain this license and its free

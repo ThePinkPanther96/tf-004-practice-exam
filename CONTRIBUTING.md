@@ -26,3 +26,19 @@ third-party material must be identified separately.
 Keep tests meaningful: grading boundaries, exact multiple-answer scoring,
 deadline enforcement, persistence, source retention, and complete exam flows.
 Never commit user databases, cookies, credentials, or personal contact details.
+
+## Optional demo progress
+
+For UI testing, first create a session in your browser. Copy its UUID from the
+result or session URL, then load five demo exams and a perfect study session:
+
+```sh
+docker compose exec -e PROFILE_ATTEMPT_ID=ATTEMPT_UUID app node scripts/seed-easter-eggs.mjs
+```
+
+The seed is labeled Demo, is included in progress statistics, and does not
+duplicate existing demo data. Remove only that profile's demo sessions with:
+
+```sh
+docker compose exec -e PROFILE_ATTEMPT_ID=DEMO_ATTEMPT_UUID app node scripts/seed-easter-eggs.mjs --remove
+```

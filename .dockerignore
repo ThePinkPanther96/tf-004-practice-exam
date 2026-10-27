@@ -3,6 +3,15 @@ dist
 .git
 data
 .env
+.env.*
+!.env.example
+*.log
+*.sqlite*
+__pycache__
+*.py[cod]
+.DS_Store
+docs
+.github
 coverage
 test-results
 playwright-report
