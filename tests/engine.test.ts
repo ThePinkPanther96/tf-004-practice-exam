@@ -69,6 +69,26 @@ test("topic and missed-question study filters are enforced", () => {
     /Only 10/,
   );
 });
+test("all matching questions covers complete subjects, deduplicates, and respects missed filters", () => {
+  const bank = fixture(128);
+  bank.push({ ...bank[0], id: "duplicate", duplicateOf: bank[0].id });
+  bank.push({ ...bank[0], id: "review", status: "needs-review" });
+  const subject = sampleQuestions(bank, "all", new Map(), [1]);
+  assert.equal(subject.length, 16);
+  assert.equal(new Set(subject.map(canonicalId)).size, 16);
+  assert.ok(subject.every((q) => q.topic === 1 && q.status === "ready"));
+  assert.equal(sampleQuestions(bank, "all", new Map(), [1, 2]).length, 32);
+  assert.equal(sampleQuestions(bank, "all").length, 128);
+  const missed = new Set([bank[0].id, bank[8].id, bank[1].id]);
+  assert.deepEqual(
+    new Set(sampleQuestions(bank, "all", new Map(), [1], missed).map(canonicalId)),
+    new Set([bank[0].id, bank[8].id]),
+  );
+  assert.throws(
+    () => sampleQuestions(bank, "all", new Map(), [1], new Set()),
+    /No unique, ready questions/,
+  );
+});
 test("less-seen questions are preferred within objectives", () => {
   const bank = fixture();
   const seen = new Map(bank.slice(0, 80).map((q) => [q.id, 10]));

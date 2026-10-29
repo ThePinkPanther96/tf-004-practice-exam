@@ -40,7 +40,7 @@ export function canonicalId(q: Question) {
 // Prioritize less-seen entries, retaining randomness among equally exposed questions.
 export function sampleQuestions(
   bank: Question[],
-  count: number,
+  count: number | "all",
   seen: Map<string, number> = new Map(),
   topics: number[] = [],
   weakIds?: Set<string>,
@@ -62,7 +62,12 @@ export function sampleQuestions(
         (a, b) => (seen.get(a.id) ?? 0) - (seen.get(b.id) ?? 0),
       )[0],
   );
-  if (unique.length < count)
+  const targetCount = count === "all" ? unique.length : count;
+  if (!unique.length)
+    throw new Error(
+      "No unique, ready questions match these settings. Choose more topics or turn off the missed-question filter.",
+    );
+  if (unique.length < targetCount)
     throw new Error(
       `Only ${unique.length} unique, ready questions match these settings. Choose a smaller study session or more topics.`,
     );
@@ -73,10 +78,10 @@ export function sampleQuestions(
     buckets.set(q.topic, [...(buckets.get(q.topic) ?? []), q]);
   const result: Question[] = [];
   const order = shuffle([...buckets.keys()]);
-  while (result.length < count)
+  while (result.length < targetCount)
     for (const topic of order) {
       const q = buckets.get(topic)!.shift();
-      if (q && result.length < count) result.push(q);
+      if (q && result.length < targetCount) result.push(q);
     }
   // Preserve option order: options such as "all of the above" are position-dependent.
   return shuffle(result);

@@ -125,10 +125,12 @@ export class Store {
   create(
     owner: string,
     mode: "exam" | "study",
-    count: number,
+    count: number | "all",
     topics: number[],
     missedOnly: boolean,
   ) {
+    if (mode === "exam" && count === "all")
+      throw new Error("Timed exams require 57–60 questions.");
     if (
       mode === "exam" &&
       this.all(owner).some((a) => a.mode === "exam" && a.status === "active")
@@ -160,7 +162,7 @@ export class Store {
       createdAt,
       deadline: mode === "exam" ? createdAt + 3600000 : null,
       submittedAt: null,
-      count,
+      count: questions.length,
       passThreshold: 70,
       questions,
       responses: {},

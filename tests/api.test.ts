@@ -19,6 +19,29 @@ test("HTTP exam flow, cookie isolation, validation, origin checks, and library a
     const cookie = first.headers.get("set-cookie")!.split(";")[0];
     assert.match(first.headers.get("set-cookie")!, /HttpOnly/i);
     const headers = { "Content-Type": "application/json", Cookie: cookie };
+    const study = await fetch(base + "/api/attempts", {
+      method: "POST",
+      headers,
+      body: JSON.stringify({ mode: "study", count: "all", topics: [1] }),
+    });
+    assert.equal(study.status, 201);
+    const fullSubject = (await study.json()) as Attempt;
+    assert.equal(fullSubject.count, 13);
+    assert.equal(fullSubject.questions.length, 13);
+    assert.ok(fullSubject.questions.every((q) => q.topic === 1));
+    assert.equal(fullSubject.deadline, null);
+    const restoredStudy = await fetch(base + `/api/attempts/${fullSubject.id}`, {
+      headers,
+    });
+    assert.equal((await restoredStudy.json()).count, 13);
+    assert.equal(
+      (await fetch(base + "/api/attempts", {
+        method: "POST",
+        headers,
+        body: JSON.stringify({ mode: "exam", count: "all" }),
+      })).status,
+      400,
+    );
     const create = await fetch(base + "/api/attempts", {
       method: "POST",
       headers,
@@ -80,7 +103,7 @@ test("HTTP exam flow, cookie isolation, validation, origin checks, and library a
       await fetch(base + "/api/dashboard", { headers })
     ).json();
     assert.equal(dashboard.history.length, 1);
-    assert.equal(dashboard.active.length, 0);
+    assert.equal(dashboard.active.length, 1);
     const library = await (
       await fetch(base + "/api/questions?topic=3&search=Question&page=1", {
         headers,

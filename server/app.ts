@@ -79,10 +79,15 @@ export function createApp(store: Store) {
   });
   app.post("/api/attempts", (req, res) => {
     const { mode, count, topics = [], missedOnly = false } = req.body ?? {};
+    const validCount =
+      (mode === "study" && count === "all") ||
+      (Number.isInteger(count) &&
+        (mode === "exam"
+          ? count >= 57 && count <= 60
+          : count >= 1 && count <= 100));
     if (
       !["exam", "study"].includes(mode) ||
-      !Number.isInteger(count) ||
-      (mode === "exam" ? count < 57 || count > 60 : count < 1 || count > 100) ||
+      !validCount ||
       !Array.isArray(topics) ||
       topics.some(
         (t: unknown) => !Number.isInteger(t) || Number(t) < 1 || Number(t) > 8,

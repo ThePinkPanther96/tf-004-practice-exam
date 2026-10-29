@@ -676,7 +676,7 @@ function AttemptList({ attempts }: { attempts: AttemptSummary[] }) {
 
 function Setup({ mode, data }: { mode: "exam" | "study"; data: Dashboard }) {
   const exam = mode === "exam";
-  const [count, setCount] = useState(exam ? 60 : 10),
+  const [count, setCount] = useState<number | "all">(exam ? 60 : 10),
     [topics, setTopics] = useState<number[]>([]),
     [missedOnly, setMissedOnly] = useState(false);
   const [error, setError] = useState(""),
@@ -730,7 +730,9 @@ function Setup({ mode, data }: { mode: "exam" | "study"; data: Dashboard }) {
               <select
                 id={`count-${mode}`}
                 value={count}
-                onChange={(e) => setCount(+e.target.value)}
+                onChange={(e) =>
+                  setCount(e.target.value === "all" ? "all" : +e.target.value)
+                }
               >
                 {(exam ? [57, 58, 59, 60] : [1, 5, 10, 20, 30, 50, 60]).map(
                   (n) => (
@@ -739,12 +741,19 @@ function Setup({ mode, data }: { mode: "exam" | "study"; data: Dashboard }) {
                     </option>
                   ),
                 )}
+                {!exam && <option value="all">All matching questions</option>}
               </select>
             </div>
             <Mascot pose={exam ? "presenting" : "study-guide"} />
           </div>
           {!exam && (
             <>
+              {count === "all" && (
+                <p className="muted">
+                  Includes every unique, ready question in your selected focus
+                  areas. The missed-question filter still applies.
+                </p>
+              )}
               <div className="field-label">
                 Focus areas{" "}
                 <small>Leave all unchecked to explore every objective.</small>
@@ -832,7 +841,7 @@ function Setup({ mode, data }: { mode: "exam" | "study"; data: Dashboard }) {
             <p>Built around the eight exam objectives and Terraform 1.12.</p>
             <div>
               <span>Questions</span>
-              <strong>{count}</strong>
+              <strong>{count === "all" ? "All matching" : count}</strong>
             </div>
             <div>
               <span>Time limit</span>
