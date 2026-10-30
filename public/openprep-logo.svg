@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none" role="img" aria-labelledby="title">
+  <title id="title">OpenPrep logo</title>
+  <g fill="#6D5CE7">
+    <path d="M37 110.765a54 54 0 1 1 54 0l-6-10.392a42 42 0 1 0-42 0z"/>
+    <path d="m64 43-30 15 30 15 30-15-30-15Zm-18 28v10c10.5 7 25.5 7 36 0V71l-18 9-18-9Z"/>
+    <path d="M91 60h4v19h-4z"/>
+    <circle cx="93" cy="81" r="4"/>
+  </g>
+</svg>

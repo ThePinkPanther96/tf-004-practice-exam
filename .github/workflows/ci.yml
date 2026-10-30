@@ -1,4 +1,4 @@
-name: Verify TerraPrep
+name: Verify OpenPrep
 on:
   push:
   pull_request:
@@ -17,4 +17,4 @@ jobs:
       - run: npm run validate:questions
       - run: npm test
       - run: npm run build
-      - run: docker build -t terraprep-community:ci .
+      - run: docker build -t openprep-community:ci .

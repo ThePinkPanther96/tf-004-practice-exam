@@ -1,6 +1,6 @@
 # Contributing
 
-TerraPrep is a free community project. Read `LICENSE`,
+OpenPrep is a free community project. Read `LICENSE`,
 `THIRD_PARTY_NOTICES.md`, and `questions/README.md` before contributing.
 
 Use Node.js 24 or newer. Run `npm ci`, `npm run dev`, and open the printed local

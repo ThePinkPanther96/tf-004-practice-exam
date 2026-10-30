@@ -260,11 +260,9 @@ export function App() {
       )}
       <aside className={`sidebar ${mobile ? "open" : ""}`}>
         <Link to="/" className="brand">
-          <span className="brand-icon">
-            <Layers3 size={25} />
-          </span>
+          <span className="brand-icon" aria-hidden="true" />
           <span>
-            TerraPrep<span className="brand-sub">COMMUNITY EDITION</span>
+            OpenPrep<span className="brand-sub">COMMUNITY EDITION</span>
           </span>
         </Link>
         <div className="sidebar-label">YOUR WORKSPACE</div>
@@ -295,7 +293,7 @@ export function App() {
             <strong>Made for the community.</strong>
           </div>
           <div className="version">
-            TerraPrep v0.1 <span>Terraform 004</span>
+            OpenPrep v0.1 <span>Terraform 004</span>
           </div>
         </div>
       </aside>
@@ -1297,7 +1295,10 @@ function Exam({ refresh }: { refresh: () => Promise<void> }) {
               QUESTION {(visibleIndex ?? 0) + 1}{" "}
               <span className="muted">OF {a.count}</span>
             </span>
-            <span className="pill topic-pill category-badge" data-topic={q.topic}>
+            <span
+              className="pill topic-pill category-badge"
+              data-topic={q.topic}
+            >
               {TOPICS[q.topic - 1]}
             </span>
             {!submitted && (
@@ -1849,32 +1850,48 @@ function Progress({ data }: { data: Dashboard }) {
         />
       </div>
       <BrickMilestone count={exams.length} />
-      {exams.length > 0 && (
+      {data.history.length > 0 && (
         <section className="panel trend-panel">
           <div className="panel-heading">
-            <h2>Your exam scores</h2>
-            <span>Last 12 exams · passing target 70%</span>
+            <h2>Your session scores</h2>
+            <span>Last 12 sessions · 70% reference</span>
+            <select
+              aria-label="Filter score chart"
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
+            >
+              <option value="all">All sessions</option>
+              <option value="exam">Timed exams</option>
+              <option value="study">Study sessions</option>
+            </select>
           </div>
-          <div className="score-chart">
-            <div className="target-line" style={{ bottom: "70%" }}>
-              <span>70%</span>
+          {history.length ? (
+            <div className="score-chart">
+              <div className="target-line" style={{ bottom: "70%" }}>
+                <span>70%</span>
+              </div>
+              {history
+                .slice(0, 12)
+                .reverse()
+                .map((a, i) => (
+                  <Link
+                    key={a.id}
+                    className={resultTone(a)}
+                    to={`/attempt/${a.id}`}
+                    style={{ height: `${Math.max(a.score!, 2)}%` }}
+                    aria-label={`${a.mode === "exam" ? "Timed exam" : "Study session"} ${i + 1}, ${percent(a.score!)}, ${a.count} questions`}
+                    title={`${a.mode === "exam" ? "Timed exam" : "Study session"} · ${a.count} questions · ${percent(a.score!)}`}
+                  >
+                    <span>{percent(a.score!)}</span>
+                    <small>{i + 1}</small>
+                  </Link>
+                ))}
             </div>
-            {exams
-              .slice(0, 12)
-              .reverse()
-              .map((a, i) => (
-                <Link
-                  key={a.id}
-                  className={resultTone(a)}
-                  to={`/attempt/${a.id}`}
-                  style={{ height: `${Math.max(a.score!, 2)}%` }}
-                  aria-label={`Exam ${i + 1}, ${percent(a.score!)}`}
-                >
-                  <span>{percent(a.score!)}</span>
-                  <small>{i + 1}</small>
-                </Link>
-              ))}
-          </div>
+          ) : (
+            <p className="score-chart-empty">
+              No completed sessions match this filter.
+            </p>
+          )}
         </section>
       )}
       <div className="overview-bottom">
@@ -1935,10 +1952,10 @@ function About() {
           <span className="mode-icon violet">
             <Leaf size={26} />
           </span>
-          <h2>Why TerraPrep exists</h2>
+          <h2>Why OpenPrep exists</h2>
         </div>
         <p>
-          Good preparation should be accessible. TerraPrep brings community
+          Good preparation should be accessible. OpenPrep brings community
           study questions into a focused practice experience with explanations,
           objective coverage, and a realistic clock.
         </p>
@@ -1960,11 +1977,10 @@ function About() {
         <h3>A community project, free to use</h3>
         <p>
           Local use and free public hosting are welcome. The project uses a
-          TerraPrep Community License 1.0, a custom noncommercial, source-sharing
-          license. Selling the
-          app, charging for access, and closed-source derivatives are
-          prohibited. Third-party material retains its applicable terms and
-          attribution.
+          OpenPrep Community License 1.0, a custom noncommercial,
+          source-sharing license. Selling the app, charging for access, and
+          closed-source derivatives are prohibited. Third-party material retains
+          its applicable terms and attribution.
         </p>
         <h3>Your progress stays with your browser</h3>
         <p>
@@ -1976,7 +1992,7 @@ function About() {
         <div className="about-disclaimer">
           <ShieldCheck size={22} />
           <p>
-            TerraPrep is not affiliated with or endorsed by HashiCorp. Questions
+            OpenPrep is not affiliated with or endorsed by HashiCorp. Questions
             are community practice material, not a claim of verified real-exam
             content. Terraform and HashiCorp are trademarks of their respective
             owners.

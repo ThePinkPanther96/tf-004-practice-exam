@@ -1,7 +1,7 @@
 services:
   app:
     build: .
-    image: terraprep-community:local
+    image: openprep-community:local
     ports:
       - "${BIND_ADDRESS:-127.0.0.1}:${APP_PORT:-8080}:3000"
     environment:

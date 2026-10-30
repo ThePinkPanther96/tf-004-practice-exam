@@ -88,6 +88,41 @@ test("restart preserves answers, deadline, browser isolation, and original quest
     rmSync(dir, { recursive: true, force: true });
   }
 });
+test("whole-subject study results remain in progress after a restart", () => {
+  const dir = mkdtempSync(join(tmpdir(), "terraprep-subject-"));
+  const path = join(dir, "db.sqlite");
+  const bank = fixture(128);
+  let store = new Store(path, bank);
+  try {
+    const attempt = store.create("alice", "study", "all", [1], false);
+    assert.equal(attempt.count, 16);
+    for (const q of attempt.questions.slice(0, 14)) {
+      store.answer(
+        "alice",
+        attempt.id,
+        q.id,
+        bank.find((b) => b.id === q.id)!.correct,
+        false,
+      );
+    }
+    store.submit("alice", attempt.id);
+    store.close();
+    store = new Store(path, bank);
+    const progress = store.dashboard("alice");
+    assert.equal(progress.active.length, 0);
+    assert.equal(progress.history.length, 1);
+    assert.equal(progress.history[0].id, attempt.id);
+    assert.equal(progress.history[0].mode, "study");
+    assert.equal(progress.history[0].count, 16);
+    assert.equal(progress.history[0].correctCount, 14);
+    assert.equal(progress.history[0].score, 87.5);
+    assert.equal(progress.topics[0].accuracy, 87.5);
+    assert.equal(store.dashboard("bob").history.length, 0);
+  } finally {
+    store.close();
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
 test("study checking reveals only that answer, locks it, and has no deadline", () => {
   const bank = fixture(),
     store = new Store(":memory:", bank);

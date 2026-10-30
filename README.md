@@ -1,9 +1,9 @@
-# TerraPrep Community
+<h1><img src="public/openprep-logo.svg" width="48" height="48" alt="OpenPrep logo"> OpenPrep</h1>
 
 A free, local-first practice app for **Terraform Associate 004**. Runs in one
 Docker container with SQLite. No account, API key, or cloud service required.
 
-![TerraPrep dashboard](docs/overview.png)
+![OpenPrep dashboard](docs/overview.png)
 
 ## Quick start
 
@@ -16,15 +16,18 @@ docker compose up --build -d
 Open **[http://localhost:8080](http://localhost:8080)**.
 
 - **Practice exams:** 57–60 questions, 60 minutes, 70% passing target.
-- **Study mode:** topic filters, missed-question practice, and explanations.
+- **Study mode:** choose a question count or all questions in selected subjects,
+  with missed-question practice and explanations.
 - **Question library:** 245 collected entries, including 212 unique questions
   ready for practice. Duplicates and entries needing review stay searchable.
-- **Progress:** saved answers, review flags, exam history, and objective scores.
+- **Progress:** saved answers, review flags, exam and study score charts,
+  session history, and objective scores.
 - Light/dark themes and syntax-highlighted Terraform code.
 
 ## Progress and configuration
 
-Progress stays in the `terraprep-data` Docker volume. Stop the app with
+Progress stays in the `terraprep-data` Docker volume (its existing name is kept
+for compatibility). Stop the app with
 `docker compose down`; adding `-v` deletes that data.
 
 History is tied to your browser cookie. Use the same browser and address:
@@ -50,7 +53,7 @@ Open [http://localhost:5173](http://localhost:5173). See
 ## License
 
 Free noncommercial use and free hosting under the custom
-[TerraPrep Community License 1.0](LICENSE), with source-sharing requirements. Third-party
+[OpenPrep Community License 1.0](LICENSE), with source-sharing requirements. Third-party
 content keeps its own terms; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 Independent of HashiCorp. Exam timing, question count, and passing threshold are

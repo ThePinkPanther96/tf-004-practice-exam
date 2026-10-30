@@ -105,8 +105,11 @@ p {
 }
 .brand-icon {
   color: var(--text-secondary);
-  display: grid;
-  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  background: currentColor;
+  mask: url("/openprep-logo.svg") center / contain no-repeat;
 }
 .brand-sub {
   font-size: 12px;
@@ -1769,6 +1772,14 @@ input[type="radio"] {
 }
 .trend-panel {
   margin: 25px 0;
+}
+.trend-panel .panel-heading {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.score-chart-empty {
+  padding: 24px;
+  color: var(--text-secondary);
 }
 .score-chart {
   height: 180px;
