@@ -630,10 +630,12 @@ input,
 .score-chart > a.perfect > span {
   color: var(--gold);
 }
-.score-chart > a.failed {
+.score-chart > a.failed,
+.score-chart > a.study-result {
   background: var(--danger);
 }
-.score-chart > a.failed > span {
+.score-chart > a.failed > span,
+.score-chart > a.study-result > span {
   color: var(--danger);
 }
 .target-line {

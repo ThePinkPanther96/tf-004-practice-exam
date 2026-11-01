@@ -24,6 +24,25 @@ Open **[http://localhost:8080](http://localhost:8080)**.
   session history, and objective scores.
 - Light/dark themes and syntax-highlighted Terraform code.
 
+## App preview
+
+<details>
+<summary>See practice exams, study mode, and progress</summary>
+
+**Practice exams** — configure a timed session with 57–60 questions.
+
+![Practice exam setup with question count, timer, and passing target](docs/practice-exam.png)
+
+**Study mode** — focus on selected subjects or revisit missed questions.
+
+![Study session setup with subject filters and question counts](docs/study-mode.png)
+
+**My progress** — track session scores, review history, and objective performance.
+
+![Progress dashboard with score chart, session history, and objective performance](docs/progress.png)
+
+</details>
+
 ## Progress and configuration
 
 Progress stays in the `terraprep-data` Docker volume (its existing name is kept

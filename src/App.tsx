@@ -66,6 +66,7 @@ import {
   BrickMilestone,
 } from "./EasterEggs";
 import { isFloydSearch } from "../shared/easterEggs";
+import { version as appVersion } from "../package.json";
 
 const date = (n: number) =>
   new Date(n).toLocaleDateString(undefined, {
@@ -261,8 +262,9 @@ export function App() {
       <aside className={`sidebar ${mobile ? "open" : ""}`}>
         <Link to="/" className="brand">
           <span className="brand-icon" aria-hidden="true" />
-          <span>
-            OpenPrep<span className="brand-sub">COMMUNITY EDITION</span>
+          <span className="brand-wordmark">
+            <span className="brand-title">OpenPrep</span>
+            <span className="brand-sub">COMMUNITY EDITION</span>
           </span>
         </Link>
         <div className="sidebar-label">YOUR WORKSPACE</div>
@@ -290,10 +292,10 @@ export function App() {
         <div className="sidebar-bottom">
           <div className="community-note">
             <Leaf size={20} />
-            <strong>Made for the community.</strong>
+            <strong>Made for the community, by the community</strong>
           </div>
           <div className="version">
-            OpenPrep v0.1 <span>Terraform 004</span>
+            OpenPrep v{appVersion} <span>Terraform 004</span>
           </div>
         </div>
       </aside>
@@ -1895,7 +1897,7 @@ function Progress({ data }: { data: Dashboard }) {
         </section>
       )}
       <div className="overview-bottom">
-        <section className="panel">
+        <section className="panel session-history-panel">
           <div className="panel-heading">
             <h2>Session history</h2>
             <select
@@ -1908,24 +1910,31 @@ function Progress({ data }: { data: Dashboard }) {
               <option value="study">Study</option>
             </select>
           </div>
-          {data.active.map((a) => (
-            <Link className="active-session" key={a.id} to={`/attempt/${a.id}`}>
-              <span className="live-dot" />
-              {a.mode === "exam" ? "Exam" : "Study session"} in progress ·{" "}
-              {a.count} questions
-              <ArrowRight size={16} />
-            </Link>
-          ))}
-          {history.length ? (
-            <AttemptList attempts={history} />
-          ) : (
-            <Empty
-              title="A fresh page"
-              mascot={data.history.length === 0 ? "resting" : undefined}
-            >
-              Your completed sessions will appear here.
-            </Empty>
-          )}
+          <div
+            className="session-history-list"
+            role="region"
+            aria-label="Session history entries"
+            tabIndex={0}
+          >
+            {data.active.map((a) => (
+              <Link className="active-session" key={a.id} to={`/attempt/${a.id}`}>
+                <span className="live-dot" />
+                {a.mode === "exam" ? "Exam" : "Study session"} in progress ·{" "}
+                {a.count} questions
+                <ArrowRight size={16} />
+              </Link>
+            ))}
+            {history.length ? (
+              <AttemptList attempts={history} />
+            ) : (
+              <Empty
+                title="A fresh page"
+                mascot={data.history.length === 0 ? "resting" : undefined}
+              >
+                Your completed sessions will appear here.
+              </Empty>
+            )}
+          </div>
         </section>
         <section className="panel">
           <div className="panel-heading">
